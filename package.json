@@ -1,0 +1,41 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "lint:security": "eslint --ext .js,.jsx,.mjs src/ --config eslint.config.mjs",
+    "lint:fix": "eslint --ext .js,.jsx,.mjs src/ --fix"
+  },
+  "dependencies": {
+    "@dashevo/dashcore-lib": "^0.25.0",
+    "@heroicons/react": "^2.2.0",
+    "@react-email/components": "^0.5.6",
+    "@react-email/render": "^1.3.2",
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.75.0",
+    "axios": "^1.12.2",
+    "next": "15.5.4",
+    "qrcode": "^1.5.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hot-toast": "^2.6.0",
+    "resend": "^6.1.2"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@eslint/js": "^9.37.0",
+    "@tailwindcss/postcss": "^4",
+    "daisyui": "^5.1.29",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.4",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-security": "^3.0.1",
+    "tailwindcss": "^4"
+  },
+  "browserslist": "> 1%"
+}
