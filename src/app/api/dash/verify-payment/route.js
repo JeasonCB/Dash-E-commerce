@@ -109,10 +109,11 @@ export async function POST(request) {
   } catch (error) {
     console.error('Payment verification error:', error);
     
+    // Security: Do not expose internal error details to client
     return NextResponse.json(
       { 
         error: 'Payment verification failed',
-        message: error.message,
+        message: 'An internal error occurred. Please try again later.',
       },
       { status: 500 }
     );

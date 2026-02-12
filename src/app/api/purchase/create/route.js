@@ -23,7 +23,8 @@ export async function POST(request) {
     const body = await request.json();
     const { plan } = body;
 
-    if (!plan || !PLAN_PRICES[plan]) {
+    // Security: Validate plan exists as own property to prevent prototype pollution
+    if (!plan || !Object.hasOwn(PLAN_PRICES, plan)) {
       return NextResponse.json(
         { error: 'Invalid plan' },
         { status: 400 }
@@ -52,6 +53,7 @@ export async function POST(request) {
     }
 
     // 4. Obtener precio actual de DASH
+    // eslint-disable-next-line security/detect-object-injection
     const planPriceUSD = PLAN_PRICES[plan].usd;
     const pricing = await priceOracle.calculateDashAmount(planPriceUSD);
 
@@ -132,10 +134,11 @@ export async function POST(request) {
   } catch (error) {
     console.error('Purchase creation error:', error);
     
+    // Security: Do not expose internal error details to client
     return NextResponse.json(
       { 
         error: 'Failed to create purchase',
-        message: error.message,
+        message: 'An internal error occurred. Please try again later.',
       },
       { status: 500 }
     );
